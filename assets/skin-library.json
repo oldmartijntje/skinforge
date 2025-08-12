@@ -42,6 +42,11 @@
       "category": "Eyes"
     },
     {
+      "name": "Thin Eyes 2",
+      "src": "assets/skins/eyes/eyes2.png",
+      "category": "Eyes"
+    },
+    {
       "name": "Brown Hair",
       "src": "assets/skins/hair/hair.png",
       "category": "Hair"
@@ -51,6 +56,11 @@
       "src": "assets/skins/hair/hair2.png",
       "category": "Hair",
       "credits": "https://namemc.com/skin/5a9c28db4c0da127"
+    },
+    {
+      "name": "Brown Hair",
+      "src": "assets/skins/hair/hair3.png",
+      "category": "Hair"
     },
     {
       "name": "Cat Ears",
@@ -63,9 +73,33 @@
       "category": "Accessories"
     },
     {
+      "name": "SteamPunk Glasses",
+      "src": "assets/skins/accessories/steampunk_glasses.png",
+      "category": "Accessories",
+      "credits": "https://namemc.com/skin/964be322fd113204"
+    },
+    {
       "name": "Themepark Employee",
       "src": "assets/skins/suits/themepark_employee.png",
       "category": "Suits"
+    },
+    {
+      "name": "Steampunk Suit",
+      "src": "assets/skins/suits/steampunk_suit.png",
+      "category": "Suits",
+      "credits": "https://namemc.com/skin/964be322fd113204"
+    },
+    {
+      "name": "Mumbo Suit",
+      "src": "assets/skins/suits/mumbo_suit.png",
+      "category": "Suits",
+      "credits": "https://namemc.com/skin/a0764f1f857388d4"
+    },
+    {
+      "name": "Hazmat Suit",
+      "src": "assets/skins/suits/hazmat.png",
+      "category": "Suits",
+      "credits": "https://namemc.com/skin/840c805dd5498626"
     }
   ]
 }
