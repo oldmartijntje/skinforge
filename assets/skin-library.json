@@ -6,7 +6,8 @@
     "Accessories",
     "Pants",
     "Shirts",
-    "Costumes"
+    "Costumes",
+    "Suits"
   ],
   "skins": [
     {
@@ -15,9 +16,44 @@
       "category": "Base"
     },
     {
-      "name": "Tinkerer",
-      "src": "assets/skins/tinkerer.png",
+      "name": "Skintone1",
+      "src": "assets/skins/base/base.png",
       "category": "Base"
+    },
+    {
+      "name": "Skintone2",
+      "src": "assets/skins/base/base2.png",
+      "category": "Base"
+    },
+    {
+      "name": "Skintone3",
+      "src": "assets/skins/base/base3.png",
+      "category": "Base"
+    },
+    {
+      "name": "Skintone4",
+      "src": "assets/skins/base/base4.png",
+      "category": "Base"
+    },
+    {
+      "name": "eyes1",
+      "src": "assets/skins/eyes/eyes.png",
+      "category": "Eyes"
+    },
+    {
+      "name": "hair1",
+      "src": "assets/skins/hair/hair.png",
+      "category": "Hair"
+    },
+    {
+      "name": "cat ears",
+      "src": "assets/skins/accessories/cat_ears.png",
+      "category": "Accessories"
+    },
+    {
+      "name": "themepark employee",
+      "src": "assets/skins/suits/themepark_employee.png",
+      "category": "Suits"
     }
   ]
 }
