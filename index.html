@@ -13,39 +13,39 @@
   <header>
     <h1>Minecraft Skin Layerer</h1>
     <nav>
-  <button id="library-toggle" aria-label="Open Library" class="btn btn-primary me-2">Library</button>
-  <button id="render-btn" aria-label="Render Previews" class="btn btn-success me-2">Render</button>
-  <button id="export-import-modal-btn" aria-label="Open Export/Import" class="btn btn-warning">Export / Import</button>
+      <button id="library-toggle" aria-label="Open Library" class="btn btn-primary me-2">Library</button>
+      <button id="render-btn" aria-label="Render Previews" class="btn btn-success me-2">Render</button>
+      <button id="export-import-modal-btn" aria-label="Open Export/Import" class="btn btn-warning">Export / Import</button>
 
-  <div id="export-import-modal" class="library-overlay" aria-modal="true" role="dialog" style="display:none; z-index:2000;">
-    <div class="library-content" style="min-width:340px; max-width:95vw;">
-      <button id="export-import-close" type="button" aria-label="Close Export/Import" class="btn btn-danger position-absolute top-0 end-0 m-3">X</button>
-      <h2 style="margin-right: 2rem;">Export / Import</h2>
-      <hr>
-      <h3>Import configuration</h3>
-      <p>Configurations allow you to load your current layers another time.<br>This makes it so that you can make changes later on.</p>
-      <div style="margin-bottom:1em;">
-        <input type="checkbox" id="export-embed-checkbox" checked>
-        <label for="export-embed-checkbox" style="color:var(--bs-light);">Export custom layers</label><br/>
-        <p style="font-style: italic;color: gray;">Exporting custom layers works by embedding the layers as images, this also means that the file size will increase. But it has the added effect of making sure your skin stays 100% the same, even when the layers in the library change.</p>
+      <div id="export-import-modal" class="library-overlay" aria-modal="true" role="dialog" style="display:none; z-index:2000;">
+        <div class="library-content" style="min-width:340px; max-width:95vw;">
+          <button id="export-import-close" type="button" aria-label="Close Export/Import" class="btn btn-danger position-absolute top-0 end-0 m-3">X</button>
+          <h2 style="margin-right: 2rem;">Export / Import</h2>
+          <hr>
+          <h3>Import configuration</h3>
+          <p>Configurations allow you to load your current layers another time.<br>This makes it so that you can make changes later on.</p>
+          <div style="margin-bottom:1em;">
+            <input type="checkbox" id="export-embed-checkbox" checked>
+            <label for="export-embed-checkbox" style="color:var(--bs-light);">Export custom layers</label><br/>
+            <p style="font-style: italic;color: gray;">Exporting custom layers works by embedding the layers as images, this also means that the file size will increase. But it has the added effect of making sure your skin stays 100% the same, even when the layers in the library change.</p>
+          </div>
+          <button id="export-btn" class="btn btn-success mb-3">Export (.skinforge)</button>
+          <br>
+          <label for="import-input-modal" class="btn btn-secondary mb-2">Import .skinforge file</label>
+          <input type="file" id="import-input-modal" accept=".skinforge" style="display:none">
+          <hr>
+          <h3>Export to Minecraft</h3>
+          <p>This allows you to save your skin as a PNG file, which can be used in Minecraft. But it will not retain layer information.</p>
+          <button id="export-png-btn" class="btn btn-info mb-3">Save as PNG (for Minecraft)</button>
+          <hr>
+          <div id="export-import-message" class="message" style="display:none; position:static; margin-top:1em;"></div>
+        </div>
       </div>
-      <button id="export-btn" class="btn btn-success mb-3">Export (.skinforge)</button>
-      <br>
-      <label for="import-input-modal" class="btn btn-secondary mb-2">Import .skinforge file</label>
-      <input type="file" id="import-input-modal" accept=".skinforge" style="display:none">
-      <hr>
-      <h3>Export to Minecraft</h3>
-      <p>This allows you to save your skin as a PNG file, which can be used in Minecraft. But it will not retain layer information.</p>
-      <button id="export-png-btn" class="btn btn-info mb-3">Save as PNG (for Minecraft)</button>
-      <hr>
-      <div id="export-import-message" class="message" style="display:none; position:static; margin-top:1em;"></div>
-    </div>
-  </div>
     </nav>
   </header>
   <main style="flex-grow: 2;">
     <aside class="sidebar">
-  <button id="library-toggle-side" class="btn btn-primary w-100 mb-2">Open Library</button>
+      <button id="library-toggle-side" class="btn btn-primary w-100 mb-2">Open Library</button>
       <div class="help-text">
         <strong>Instructions:</strong><br>
         1. Add or import layers.<br>
@@ -68,7 +68,7 @@
       <h2>Layers</h2>
       <ul id="layers-list"></ul>
       <div class="layer-controls">
-  <label for="import-input" class="btn btn-secondary w-100">+ Import Image</label>
+        <label for="import-input" class="btn btn-secondary w-100">+ Import Image</label>
         <input type="file" id="import-input" accept="image/png" style="display:none">
       </div>
       <div id="layer-props" class="layer-props" style="display:none">
@@ -81,7 +81,7 @@
     </aside>
     <div id="library-overlay" class="library-overlay" aria-modal="true" role="dialog" style="display:none">
       <div class="library-content">
-  <button id="library-close" type="button" aria-label="Close Library" class="btn btn-danger position-absolute top-0 end-0 m-3" style="font-size:2em">X</button>
+        <button id="library-close" type="button" aria-label="Close Library" class="btn btn-danger position-absolute top-0 end-0 m-3" style="font-size:2em">X</button>
         <h2>Skin Library</h2>
         <div class="library-list" id="library-list">
           <!-- dynamically loaded -->
