@@ -12,10 +12,9 @@ const LEGACY_HEIGHT = 32;
 const MODERN_HEIGHT = 64;
 const FLAT_CANVAS_ID = 'flat-preview';
 const LAYERS_LIST_ID = 'layers-list';
-const LIBRARY_SKINS = [
-  { name: 'Steve', src: 'assets/skins/steve.png' },
-  { name: 'Tinkerer', src: 'assets/skins/tinkerer.png' }
-];
+const LIBRARY_JSON = 'assets/skin-library.json';
+let LIBRARY_CATEGORIES = [];
+let LIBRARY_SKINS = [];
 
 // --- State ---
 let layers = [];
@@ -304,16 +303,45 @@ document.getElementById('import-input').addEventListener('change', function(e) {
   }
 });
 
-document.querySelectorAll('.library-item').forEach(item => {
-  item.onclick = function() {
-    addLayerFromLibrary(item.dataset.src, item.dataset.name);
-    closeLibrary();
-  };
-});
+
+function renderLibraryList() {
+  const container = document.getElementById('library-list');
+  container.innerHTML = '';
+  LIBRARY_CATEGORIES.forEach(category => {
+    const catDiv = document.createElement('div');
+    catDiv.className = 'library-category';
+    const catTitle = document.createElement('h3');
+    catTitle.textContent = category;
+    catDiv.appendChild(catTitle);
+    const catList = document.createElement('div');
+    catList.className = 'library-category-list';
+    LIBRARY_SKINS.filter(skin => skin.category === category).forEach(skin => {
+      const item = document.createElement('div');
+      item.className = 'library-item';
+      item.dataset.src = skin.src;
+      item.dataset.name = skin.name;
+      const img = document.createElement('img');
+      img.src = skin.src;
+      img.alt = skin.name + ' skin';
+      item.appendChild(img);
+      const span = document.createElement('span');
+      span.textContent = skin.name;
+      item.appendChild(span);
+      item.onclick = function() {
+        addLayerFromLibrary(skin.src, skin.name);
+        closeLibrary();
+      };
+      catList.appendChild(item);
+    });
+    catDiv.appendChild(catList);
+    container.appendChild(catDiv);
+  });
+}
 
 function openLibrary() {
   document.getElementById('library-overlay').style.display = 'flex';
   document.getElementById('library-close').focus();
+  renderLibraryList();
 }
 function closeLibrary() {
   document.getElementById('library-overlay').style.display = 'none';
@@ -343,10 +371,20 @@ document.querySelector('.layers-panel').addEventListener('drop', function(e) {
 window.addEventListener('DOMContentLoaded', function() {
   flatCanvas = document.getElementById(FLAT_CANVAS_ID);
   flatCtx = flatCanvas.getContext('2d');
-  // Pre-populate with Steve as base layer
-  makeLayer({ name: 'Steve', src: 'assets/skins/steve.png', type: 'library' }, (layer) => {
-    layers.push(layer);
-    updateLayersList();
-    renderPreviews();
-  });
+  // Load library JSON
+  fetch(LIBRARY_JSON)
+    .then(res => res.json())
+    .then(data => {
+      LIBRARY_CATEGORIES = data.categories || [];
+      LIBRARY_SKINS = data.skins || [];
+      // Pre-populate with first Base skin as base layer
+      const baseSkin = LIBRARY_SKINS.find(s => s.category === 'Base') || LIBRARY_SKINS[0];
+      if (baseSkin) {
+        makeLayer({ name: baseSkin.name, src: baseSkin.src, type: 'library' }, (layer) => {
+          layers.push(layer);
+          updateLayersList();
+          renderPreviews();
+        });
+      }
+    });
 });

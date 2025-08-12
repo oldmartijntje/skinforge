@@ -12,10 +12,6 @@ A static web app for composing Minecraft skins by overlaying multiple PNG layers
 - **Export:** Download the final skin as a PNG (suitable for Minecraft). Optionally export as legacy 64x32.
 - **No build step:** All code is static and references are relative. Ready for GitHub Pages.
 
-## How to run locally
-1. Clone or download this repository.
-2. Open `index.html` in your browser (double-click or drag into browser window).
-
 ## How to deploy to GitHub Pages
 - Push the project to a GitHub repository.
 - Go to repository Settings → Pages.
@@ -23,8 +19,6 @@ A static web app for composing Minecraft skins by overlaying multiple PNG layers
 - Visit the provided GitHub Pages URL.
 
 ## Credits & Attribution
-- **Steve skin:** [Source](https://oldmartijntje.github.io/json-api/api/assets/mc-skins/random/steve.png)
-- **Tinkerer skin:** [Source](https://oldmartijntje.github.io/json-api/api/assets/mc-skins/own/tinkerer.png)
 - **skinview3d:** [skinview3d on GitHub](https://github.com/bs-community/skinview3d)
 - **SortableJS:** [SortableJS on GitHub](https://github.com/SortableJS/Sortable)
 - **FileSaver.js:** [FileSaver.js on GitHub](https://github.com/eligrey/FileSaver.js)
@@ -33,18 +27,6 @@ A static web app for composing Minecraft skins by overlaying multiple PNG layers
 - Tested in latest Chrome, Firefox, and Safari (desktop).
 - Should work on most modern browsers with ES6 support.
 - Responsive for desktop and tablets.
-
-## Notes
-- All processing is client-side. No data is sent to any server.
-- If the two skin images are missing, download them using the following script:
-
-```
-mkdir -p assets/skins
-wget -O assets/skins/steve.png https://oldmartijntje.github.io/json-api/api/assets/mc-skins/random/steve.png
-wget -O assets/skins/tinkerer.png https://oldmartijntje.github.io/json-api/api/assets/mc-skins/own/tinkerer.png
-```
-
-Or manually download and place them in `assets/skins/`.
 
 ---
 

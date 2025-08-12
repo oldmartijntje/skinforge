@@ -1,0 +1,23 @@
+{
+  "categories": [
+    "Base",
+    "Hair",
+    "Eyes",
+    "Accessories",
+    "Pants",
+    "Shirts",
+    "Costumes"
+  ],
+  "skins": [
+    {
+      "name": "Steve",
+      "src": "assets/skins/steve.png",
+      "category": "Base"
+    },
+    {
+      "name": "Tinkerer",
+      "src": "assets/skins/tinkerer.png",
+      "category": "Base"
+    }
+  ]
+}
