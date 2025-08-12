@@ -37,27 +37,33 @@
       "category": "Base"
     },
     {
-      "name": "eyes1",
+      "name": "Thin Eyes",
       "src": "assets/skins/eyes/eyes.png",
       "category": "Eyes"
     },
     {
-      "name": "hair1",
+      "name": "Brown Hair",
       "src": "assets/skins/hair/hair.png",
       "category": "Hair"
     },
     {
-      "name": "cat ears",
+      "name": "Long Green Hair",
+      "src": "assets/skins/hair/hair2.png",
+      "category": "Hair",
+      "credits": "https://namemc.com/skin/5a9c28db4c0da127"
+    },
+    {
+      "name": "Cat Ears",
       "src": "assets/skins/accessories/cat_ears.png",
       "category": "Accessories"
     },
     {
-      "name": "christmas hat",
+      "name": "Christmas Hat",
       "src": "assets/skins/accessories/christmas_hat.png",
       "category": "Accessories"
     },
     {
-      "name": "themepark employee",
+      "name": "Themepark Employee",
       "src": "assets/skins/suits/themepark_employee.png",
       "category": "Suits"
     }
