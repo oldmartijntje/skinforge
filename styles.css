@@ -1,0 +1,322 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #23272e;
+  color: #f3f3f3;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #181a20;
+  padding: 0.5em 2em;
+  border-bottom: 2px solid #2c313a;
+}
+header h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+nav button {
+  margin-left: 1em;
+  background: #2c313a;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+nav button:hover, .sidebar button:hover {
+  background: #3a4050;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  min-height: 80vh;
+}
+.sidebar {
+  width: 200px;
+  background: #20232a;
+  padding: 1em;
+  border-right: 2px solid #2c313a;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.help-text {
+  margin-top: 1em;
+  font-size: 0.95em;
+  color: #b0b6c2;
+}
+.previews {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5em 1em 1em 1em;
+  min-width: 320px;
+}
+.preview-panel {
+  background: #23272e;
+  border: 1px solid #2c313a;
+  border-radius: 8px;
+  margin-bottom: 1.5em;
+  padding: 1em;
+  width: 320px;
+  box-shadow: 0 2px 8px #0002;
+  text-align: center;
+}
+.preview-panel h2 {
+  margin-top: 0;
+  font-size: 1.1em;
+  color: #b0b6c2;
+}
+#flat-preview {
+  width: 192px;
+  height: 192px;
+  image-rendering: pixelated;
+  border: 1px solid #444;
+  background: #181a20;
+  margin: 0.5em 0;
+}
+#skinview3d-container {
+  width: 192px;
+  height: 256px;
+  background: #181a20;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin: 0.5em auto;
+}
+.layers-panel {
+  width: 260px;
+  background: #20232a;
+  border-left: 2px solid #2c313a;
+  padding: 1em 1em 1em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.layers-panel h2 {
+  margin-top: 0;
+  font-size: 1.1em;
+  color: #b0b6c2;
+}
+#layers-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em 0;
+  min-height: 120px;
+}
+.layer-item {
+  display: flex;
+  align-items: center;
+  background: #23272e;
+  border: 1px solid #2c313a;
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+  padding: 0.3em 0.5em;
+  cursor: grab;
+  transition: background 0.2s;
+}
+.layer-item.selected {
+  border: 2px solid #4e9cff;
+  background: #26324a;
+}
+.layer-thumb {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.7em;
+  border-radius: 2px;
+  border: 1px solid #444;
+  background: #181a20;
+  image-rendering: pixelated;
+}
+.layer-name {
+  flex: 1 1 0;
+  font-size: 1em;
+  color: #f3f3f3;
+  margin-right: 0.5em;
+}
+.layer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.layer-action-btn {
+  background: none;
+  border: none;
+  color: #b0b6c2;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 0.2em 0.3em;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.layer-action-btn:hover {
+  background: #2c313a;
+  color: #fff;
+}
+.import-label {
+  display: inline-block;
+  background: #2c313a;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 1em;
+  border: none;
+  transition: background 0.2s;
+}
+.import-label:hover {
+  background: #3a4050;
+}
+.layer-props {
+  background: #23272e;
+  border: 1px solid #2c313a;
+  border-radius: 4px;
+  margin-top: 1em;
+  padding: 0.7em;
+  text-align: center;
+}
+.layer-props img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  border: 1px solid #444;
+  background: #181a20;
+  margin-bottom: 0.5em;
+}
+.library-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(20,22,30,0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.library-content {
+  background: #23272e;
+  border-radius: 8px;
+  padding: 2em 2em 1.5em 2em;
+  min-width: 340px;
+  box-shadow: 0 4px 32px #0008;
+  position: relative;
+}
+#library-close {
+  position: absolute;
+  top: 1em; right: 1em;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  line-height: 1;
+}
+.library-list {
+  display: flex;
+  gap: 2em;
+  margin-top: 1em;
+  justify-content: center;
+}
+.library-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  background: #20232a;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  border: 1px solid #2c313a;
+  transition: background 0.2s, border 0.2s;
+}
+.library-item:hover {
+  background: #26324a;
+  border: 1.5px solid #4e9cff;
+}
+.library-item img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  margin-bottom: 0.5em;
+  border: 1px solid #444;
+  background: #181a20;
+  border-radius: 2px;
+}
+.message {
+  position: fixed;
+  left: 50%;
+  bottom: 2em;
+  transform: translateX(-50%);
+  background: #4e9cff;
+  color: #fff;
+  padding: 0.7em 1.5em;
+  border-radius: 4px;
+  font-size: 1em;
+  z-index: 2000;
+  box-shadow: 0 2px 8px #0004;
+  min-width: 180px;
+  text-align: center;
+}
+footer {
+  background: #181a20;
+  color: #b0b6c2;
+  text-align: center;
+  padding: 1em 0 0.5em 0;
+  font-size: 0.95em;
+  border-top: 2px solid #2c313a;
+}
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
+  .sidebar, .layers-panel {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #2c313a;
+    border-top: 2px solid #2c313a;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em 1em;
+  }
+  .previews {
+    min-width: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2em;
+  }
+  .preview-panel {
+    width: 160px;
+    margin-bottom: 0;
+  }
+  #skinview3d-container {
+    width: 128px;
+    height: 170px;
+  }
+}
+@media (max-width: 600px) {
+  header, footer {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .sidebar, .layers-panel {
+    padding: 0.5em 0.5em;
+    font-size: 0.95em;
+  }
+  .previews {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  .preview-panel {
+    width: 98vw;
+    max-width: 320px;
+  }
+}

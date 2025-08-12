@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Skin Layerer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <!-- SortableJS for drag-and-drop -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+  <!-- skinview3d for 3D preview -->
+  <script src="https://unpkg.com/skinview3d@1.18.1/bundles/skinview3d.bundle.js"></script>
+  <!-- FileSaver.js for export -->
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Minecraft Skin Layerer</h1>
+    <nav>
+      <button id="library-toggle" aria-label="Open Library">Library</button>
+      <button id="render-btn" aria-label="Render Previews">Render</button>
+      <button id="export-btn" aria-label="Export Skin">Export</button>
+    </nav>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <button id="library-toggle-side">Open Library</button>
+      <div class="help-text">
+        <strong>Instructions:</strong><br>
+        1. Add or import layers.<br>
+        2. Arrange, toggle, or remove layers.<br>
+        3. <b>Press Render</b> to update previews.<br>
+        4. <b>Export</b> to download your skin.<br>
+      </div>
+    </aside>
+    <section class="previews">
+      <div class="preview-panel">
+        <h2>Flat Preview</h2>
+        <canvas id="flat-preview" width="64" height="64" tabindex="0" aria-label="Flat skin preview"></canvas>
+      </div>
+      <div class="preview-panel">
+        <h2>3D Preview</h2>
+        <div id="skinview3d-container" tabindex="0" aria-label="3D folded preview"></div>
+      </div>
+    </section>
+    <aside class="layers-panel">
+      <h2>Layers</h2>
+      <ul id="layers-list"></ul>
+      <div class="layer-controls">
+        <label for="import-input" class="import-label">+ Import Image</label>
+        <input type="file" id="import-input" accept="image/png" style="display:none">
+      </div>
+      <div id="layer-props" class="layer-props" style="display:none">
+        <h3>Layer Properties</h3>
+        <img id="layer-props-thumb" alt="Layer preview">
+        <div>
+          <label>Opacity: <input type="range" id="layer-opacity" min="0" max="100" value="100"></label>
+        </div>
+      </div>
+    </aside>
+    <div id="library-overlay" class="library-overlay" aria-modal="true" role="dialog" style="display:none">
+      <div class="library-content">
+        <button id="library-close" aria-label="Close Library">&times;</button>
+        <h2>Skin Library</h2>
+        <div class="library-list">
+          <div class="library-item" data-src="assets/skins/steve.png" data-name="Steve">
+            <img src="assets/skins/steve.png" alt="Steve skin">
+            <span>Steve</span>
+          </div>
+          <div class="library-item" data-src="assets/skins/tinkerer.png" data-name="Tinkerer">
+            <img src="assets/skins/tinkerer.png" alt="Tinkerer skin">
+            <span>Tinkerer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="message" class="message" style="display:none"></div>
+  </main>
+  <footer>
+    <div>
+      <b>Tip:</b> Drag layers to reorder. Click eye to toggle visibility. <br>
+      <a href="https://www.minecraft.net/" target="_blank">Minecraft</a> skin format. <br>
+      Skins: <a href="https://oldmartijntje.github.io/json-api/api/assets/mc-skins/random/steve.png" target="_blank">Steve</a>, <a href="https://oldmartijntje.github.io/json-api/api/assets/mc-skins/own/tinkerer.png" target="_blank">Tinkerer</a>.<br>
+      <span>Made for GitHub Pages. <a href="README.md">Readme</a></span>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
