@@ -13,7 +13,8 @@
     {
       "name": "Steve",
       "src": "assets/skins/steve.png",
-      "category": "Base"
+      "category": "Base",
+      "credits": "https://namemc.com/skin/8a605f546ff45a2f"
     },
     {
       "name": "Skintone1",

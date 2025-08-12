@@ -85,7 +85,7 @@ function loadImage(src, cb, errCb) {
   img.src = src;
 }
 
-function makeLayer({ name, src, img, visible = true, opacity = 1.0, type = 'custom' }, cb) {
+function makeLayer({ name, src, img, visible = true, opacity = 1.0, type = 'custom', credits = undefined }, cb) {
   // Loads and normalizes image, then returns layer object
   const finish = (canvas, normType) => {
     cb({
@@ -95,7 +95,8 @@ function makeLayer({ name, src, img, visible = true, opacity = 1.0, type = 'cust
       visible,
       opacity,
       type,
-      normType
+      normType,
+      credits: credits || undefined,
     });
   };
   if (img) {
@@ -214,8 +215,8 @@ function removeLayer(idx) {
   showLayerProps(selectedLayerIdx);
 }
 
-function addLayerFromLibrary(src, name) {
-  makeLayer({ name, src, type: 'library' }, (layer) => {
+function addLayerFromLibrary(src, name, credits) {
+  makeLayer({ name, src, type: 'library', credits: credits }, (layer) => {
     layers.push(layer);
     updateLayersList();
     showMessage('Added "' + name + '" as new layer.');
@@ -344,7 +345,8 @@ function importSkinforgeFile(file, msgCb) {
               visible: l.visible,
               opacity: l.opacity,
               type: l.type,
-              src: l.src
+              src: l.src,
+              credits: l.credits
             }, layer => {
               layers[idx] = layer;
               loaded++;
@@ -365,7 +367,8 @@ function importSkinforgeFile(file, msgCb) {
               src: l.src,
               visible: l.visible,
               opacity: l.opacity,
-              type: l.type
+              type: l.type,
+              credits: l.credits
             }, layer => {
               layers[idx] = layer;
               loaded++;
@@ -425,6 +428,7 @@ function exportSkin(msgCb) {
     layers: layers.map(layer => {
       if (embed) {
         return {
+          credits: layer.credits || undefined,
           name: layer.name,
           type: layer.type,
           opacity: layer.opacity,
@@ -434,6 +438,7 @@ function exportSkin(msgCb) {
         };
       } else {
         return {
+          credits: layer.credits || undefined,
           name: layer.name,
           type: layer.type,
           opacity: layer.opacity,
@@ -470,7 +475,7 @@ function renderLibraryList() {
       const item = document.createElement('div');
       item.className = 'library-item';
       item.dataset.src = skin.src;
-      item.dataset.name = skin.name;
+      item.dataset.credits = skin.credits;
       const img = document.createElement('img');
       img.src = skin.src;
       img.alt = skin.name + ' skin';
@@ -479,7 +484,7 @@ function renderLibraryList() {
       span.textContent = skin.name;
       item.appendChild(span);
       item.onclick = function() {
-        addLayerFromLibrary(skin.src, skin.name);
+        addLayerFromLibrary(skin.src, skin.name, skin.credits);
         closeLibrary();
       };
       catList.appendChild(item);
@@ -531,7 +536,7 @@ window.addEventListener('DOMContentLoaded', function() {
       // Pre-populate with first Base skin as base layer
       const baseSkin = LIBRARY_SKINS.find(s => s.category === 'Base') || LIBRARY_SKINS[0];
       if (baseSkin) {
-        makeLayer({ name: baseSkin.name, src: baseSkin.src, type: 'library' }, (layer) => {
+        makeLayer({ name: baseSkin.name, src: baseSkin.src, type: 'library', credits: baseSkin.credits }, (layer) => {
           layers.push(layer);
           updateLayersList();
           renderPreviews();
