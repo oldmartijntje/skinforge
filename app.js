@@ -126,7 +126,14 @@ function updateLayersList() {
     // Name
     const nameSpan = document.createElement('span');
     nameSpan.className = 'layer-name';
-    nameSpan.textContent = layer.name;
+    // Truncate long names for display, show full name on hover
+    const maxLen = 18;
+    let displayName = layer.name;
+    if (displayName.length > maxLen) {
+      displayName = displayName.slice(0, maxLen - 1) + '…';
+    }
+    nameSpan.textContent = displayName;
+    nameSpan.title = layer.name;
     nameSpan.onclick = () => selectLayer(idx);
     li.appendChild(nameSpan);
     // Actions
@@ -279,29 +286,173 @@ function update3DPreview(canvas) {
   skinViewer.loadSkin(canvas.toDataURL());
 }
 
-function exportSkin() {
-  if (!lastComposite) {
-    showMessage('Please Render first.');
-    return;
-  }
-  lastComposite.toBlob(function(blob) {
-    saveAs(blob, 'skin.png');
-  }, 'image/png');
-}
 
 // --- UI Event Handlers ---
 document.getElementById('render-btn').onclick = renderPreviews;
-document.getElementById('export-btn').onclick = exportSkin;
+// Modal open/close logic
+const exportImportModal = document.getElementById('export-import-modal');
+const exportImportBtn = document.getElementById('export-import-modal-btn');
+const exportImportClose = document.getElementById('export-import-close');
+const exportImportMsg = document.getElementById('export-import-message');
+
+function showExportImportModal() {
+  exportImportModal.style.display = 'flex';
+  exportImportClose.focus();
+  exportImportMsg.style.display = 'none';
+  exportImportMsg.textContent = '';
+}
+function closeExportImportModal() {
+  exportImportModal.style.display = 'none';
+}
+
+exportImportBtn.onclick = showExportImportModal;
+exportImportClose.onclick = closeExportImportModal;
+
+document.addEventListener('keydown', function(e) {
+  if (exportImportModal.style.display === 'flex' && e.key === 'Escape') closeExportImportModal();
+});
+
+// Export button in modal
+document.getElementById('export-btn').onclick = function() {
+  exportSkin(function(msg) {
+    exportImportMsg.textContent = msg;
+    exportImportMsg.style.display = 'block';
+  });
+};
 document.getElementById('library-toggle').onclick = openLibrary;
 document.getElementById('library-toggle-side').onclick = openLibrary;
 document.getElementById('library-close').onclick = closeLibrary;
 
+// Import logic for modal
+function importSkinforgeFile(file, msgCb) {
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!data.exportType || !Array.isArray(data.layers)) {
+        msgCb('Invalid .skinforge file.');
+        return;
+      }
+      layers = [];
+      if (data.exportType === 'embedded') {
+        let loaded = 0;
+        data.layers.forEach((l, idx) => {
+          loadImage(l.imgData, img => {
+            makeLayer({
+              name: l.name,
+              img,
+              visible: l.visible,
+              opacity: l.opacity,
+              type: l.type,
+              src: l.src
+            }, layer => {
+              layers[idx] = layer;
+              loaded++;
+              if (loaded === data.layers.length) {
+                updateLayersList();
+                renderPreviews();
+                msgCb('Imported embedded .skinforge config.');
+              }
+            });
+          }, () => msgCb('Failed to load embedded image.'));
+        });
+      } else if (data.exportType === 'reference') {
+        let loaded = 0;
+        data.layers.forEach((l, idx) => {
+          if (l.type === 'library' && l.src) {
+            makeLayer({
+              name: l.name,
+              src: l.src,
+              visible: l.visible,
+              opacity: l.opacity,
+              type: l.type
+            }, layer => {
+              layers[idx] = layer;
+              loaded++;
+              if (loaded === data.layers.length) {
+                updateLayersList();
+                renderPreviews();
+                msgCb('Imported reference .skinforge config.');
+              }
+            });
+          } else {
+            loaded++;
+            if (loaded === data.layers.length) {
+              updateLayersList();
+              renderPreviews();
+              msgCb('Imported reference .skinforge config (some custom layers missing).');
+            }
+          }
+        });
+      } else {
+        msgCb('Unknown exportType in .skinforge file.');
+      }
+    } catch (err) {
+      msgCb('Failed to parse .skinforge file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Modal import input
+document.getElementById('import-input-modal').addEventListener('change', function(e) {
+  if (e.target.files && e.target.files[0]) {
+    importSkinforgeFile(e.target.files[0], function(msg) {
+      exportImportMsg.textContent = msg;
+      exportImportMsg.style.display = 'block';
+    });
+    e.target.value = '';
+  }
+});
+
+// Keep legacy PNG import for sidebar
 document.getElementById('import-input').addEventListener('change', function(e) {
   if (e.target.files && e.target.files[0]) {
     addLayerFromFile(e.target.files[0]);
     e.target.value = '';
   }
 });
+// Accepts a callback for modal message
+function exportSkin(msgCb) {
+  if (!layers.length) {
+    msgCb('No layers to export.');
+    return;
+  }
+  const embed = document.getElementById('export-embed-checkbox').checked;
+  const exportType = embed ? 'embedded' : 'reference';
+  const exported = {
+    exportType,
+    layers: layers.map(layer => {
+      if (embed) {
+        return {
+          name: layer.name,
+          type: layer.type,
+          opacity: layer.opacity,
+          visible: layer.visible,
+          imgData: layer.img.toDataURL(),
+          src: layer.src || null
+        };
+      } else {
+        return {
+          name: layer.name,
+          type: layer.type,
+          opacity: layer.opacity,
+          visible: layer.visible,
+          src: layer.type === 'library' ? layer.src : null
+        };
+      }
+    })
+  };
+  const json = JSON.stringify(exported, null, 2);
+  const blob = new Blob([json], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'skinforge-config.skinforge';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => document.body.removeChild(a), 100);
+  msgCb('Configuration exported as .skinforge file.');
+}
 
 
 function renderLibraryList() {
