@@ -274,6 +274,17 @@ footer {
   border-top: 2px solid var(--bs-secondary-bg);
 }
 
+/* Fix message overflow in export/import modal */
+.library-content .message {
+  position: static !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  min-width: 0 !important;
+  margin-top: 1em;
+  box-shadow: none;
+}
+
 @media (max-width: 900px) {
   main {
     flex-direction: column;
