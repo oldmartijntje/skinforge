@@ -4,7 +4,7 @@
 
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/+esm";
 import * as skinview3d from "https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/+esm";
-import { saveAs } from "https://cdn.jsdelivr.net/npm/file-saver@2.0.5/+esm";
+import saveAs from "https://cdn.jsdelivr.net/npm/file-saver@2.0.5/+esm";
 
 // --- Constants ---
 const SKIN_SIZE = 64;
