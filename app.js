@@ -22,7 +22,6 @@ let layers = [];
 let selectedLayerIdx = null;
 let flatCanvas = null;
 let flatCtx = null;
-let skinview3d = null;
 let skinViewer = null;
 let lastComposite = null;
 
