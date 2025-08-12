@@ -6,12 +6,7 @@
   <title>Minecraft Skin Layerer</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <!-- SortableJS for drag-and-drop -->
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-  <!-- skinview3d for 3D preview -->
-  <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/libs/skinview3d.js"></script>
-  <!-- FileSaver.js for export -->
-  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <!-- All scripts are now loaded as ES modules in app.js -->
 </head>
 <body>
   <header>
@@ -84,6 +79,6 @@
       <span>Made for GitHub Pages. <a href="README.md">Readme</a></span>
     </div>
   </footer>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

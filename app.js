@@ -1,5 +1,10 @@
-// Minecraft Skin Layerer - app.js
+
+// Minecraft Skin Layerer - app.js (ESM version)
 // Handles layer management, image normalization, compositing, 3D preview, export, and UI logic
+
+import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/+esm";
+import * as skinview3d from "https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/+esm";
+import { saveAs } from "https://cdn.jsdelivr.net/npm/file-saver@2.0.5/+esm";
 
 // --- Constants ---
 const SKIN_SIZE = 64;
@@ -149,19 +154,17 @@ function updateLayersList() {
     ul.appendChild(li);
   });
   // Re-init SortableJS
-  if (window.Sortable) {
-    if (!ul._sortable) {
-      ul._sortable = Sortable.create(ul, {
-        animation: 150,
-        onEnd: function (evt) {
-          if (evt.oldIndex !== evt.newIndex) {
-            const moved = layers.splice(evt.oldIndex, 1)[0];
-            layers.splice(evt.newIndex, 0, moved);
-            updateLayersList();
-          }
+  if (!ul._sortable) {
+    ul._sortable = Sortable.create(ul, {
+      animation: 150,
+      onEnd: function (evt) {
+        if (evt.oldIndex !== evt.newIndex) {
+          const moved = layers.splice(evt.oldIndex, 1)[0];
+          layers.splice(evt.newIndex, 0, moved);
+          updateLayersList();
         }
-      });
-    }
+      }
+    });
   }
 }
 
