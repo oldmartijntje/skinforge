@@ -52,6 +52,11 @@
       "category": "Accessories"
     },
     {
+      "name": "christmas hat",
+      "src": "assets/skins/accessories/christmas_hat.png",
+      "category": "Accessories"
+    },
+    {
       "name": "themepark employee",
       "src": "assets/skins/suits/themepark_employee.png",
       "category": "Suits"
