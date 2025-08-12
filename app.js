@@ -302,6 +302,27 @@ function showExportImportModal() {
   exportImportMsg.style.display = 'none';
   exportImportMsg.textContent = '';
 }
+    // Export PNG button logic
+    document.getElementById('export-png-btn').onclick = function() {
+      // Ensure previews are up to date
+      renderPreviews();
+      // Use the last composited skin
+      let composite = lastComposite;
+      if (!composite) {
+        showMessage('Nothing to export. Please render your skin first.');
+        return;
+      }
+      composite.toBlob(function(blob) {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'minecraft-skin.png';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => document.body.removeChild(a), 100);
+        exportImportMsg.textContent = 'PNG exported. This is the format you can import into Minecraft.';
+        exportImportMsg.style.display = 'block';
+      }, 'image/png');
+    };
 function closeExportImportModal() {
   exportImportModal.style.display = 'none';
 }
