@@ -447,26 +447,21 @@ function exportSkin(msgCb) {
   const exported = {
     exportType,
     layers: layers.map(layer => {
+      // Always include 'visible' property
+      const base = {
+        credits: layer.credits || undefined,
+        name: layer.name,
+        type: layer.type,
+        opacity: layer.opacity,
+        visible: layer.visible,
+      };
       if (embed) {
-        return {
-          credits: layer.credits || undefined,
-          name: layer.name,
-          type: layer.type,
-          opacity: layer.opacity,
-          visible: layer.visible,
-          imgData: layer.img.toDataURL(),
-          src: layer.src || null
-        };
+        base.imgData = layer.img.toDataURL();
+        base.src = layer.src || null;
       } else {
-        return {
-          credits: layer.credits || undefined,
-          name: layer.name,
-          type: layer.type,
-          opacity: layer.opacity,
-          visible: layer.visible,
-          src: layer.type === 'library' ? layer.src : null
-        };
+        base.src = layer.type === 'library' ? layer.src : null;
       }
+      return base;
     })
   };
   const json = JSON.stringify(exported, null, 2);
