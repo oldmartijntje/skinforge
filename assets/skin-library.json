@@ -138,6 +138,9 @@
     { "name": "Red Thin Eyes", "src": "assets/skins/faces/red_thin_eyes.png", "category": "Face" },
     { "name": "Scars Face", "src": "assets/skins/faces/scars_face.png", "category": "Face" },
     { "name": "Shocked Face", "src": "assets/skins/faces/shocked_face.png", "category": "Face" },
-    { "name": "Tango Face", "src": "assets/skins/faces/tango_face.png", "category": "Face" }
+    { "name": "Tango Face", "src": "assets/skins/faces/tango_face.png", "category": "Face" },
+    { "name": "Steve Eyes", "src": "assets/skins/faces/jackblack_steve_eyes.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
+    { "name": "Steve Hair", "src": "assets/skins/hair/jackblack_steve_hair.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
+    { "name": "Steve Beard", "src": "assets/skins/faces/jackblack_steve_beard.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" }
   ]
 }
