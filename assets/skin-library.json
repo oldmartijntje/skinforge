@@ -58,6 +58,19 @@
     { "name": "Sport Suit", "src": "assets/skins/suits/sport_suit.png", "category": "Suits" },
     { "name": "Steampunk Suit", "src": "assets/skins/suits/steampunk_suit.png", "category": "Suits", "credits": "https://namemc.com/skin/964be322fd113204" },
     { "name": "Themepark Employee", "src": "assets/skins/suits/themepark_employee.png", "category": "Suits" },
-    { "name": "Turtle Onesie", "src": "assets/skins/suits/turtle_onesie.png", "category": "Suits", "credits":"https://namemc.com/skin/68c36ff472bb555e" }
+    { "name": "Turtle Onesie", "src": "assets/skins/suits/turtle_onesie.png", "category": "Suits", "credits":"https://namemc.com/skin/68c36ff472bb555e" },
+
+    { "name": "Eyes 6", "src": "assets/skins/eyes/eyes6.png", "category": "Eyes" },
+    { "name": "Eyes 7", "src": "assets/skins/eyes/eyes7.png", "category": "Eyes" },
+    { "name": "Eyes 8", "src": "assets/skins/eyes/eyes8.png", "category": "Eyes" },
+    { "name": "Green Eyes", "src": "assets/skins/eyes/green_eyes.png", "category": "Eyes" },
+
+    { "name": "Black Hair", "src": "assets/skins/hair/black_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/d1d85566db37b607" },
+    { "name": "Green Hair", "src": "assets/skins/hair/green_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/77f8419fc6d78439" },
+    { "name": "Hair 4", "src": "assets/skins/hair/hair4.png", "category": "Hair", "credits": "https://namemc.com/skin/c2a50aa42134036e" },
+    { "name": "Hair 5", "src": "assets/skins/hair/hair5.png", "category": "Hair", "credits": "https://namemc.com/skin/fa7631436be1c1c2" },
+
+    { "name": "Blue Pants 2", "src": "assets/skins/pants/blue_pants2.png", "category": "Pants" },
+    { "name": "Red Pants", "src": "assets/skins/pants/red_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/77f8419fc6d78439" }
   ]
 }
