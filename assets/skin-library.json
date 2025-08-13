@@ -51,7 +51,6 @@
     { "name": "Stockings", "src": "assets/skins/shoes/stockings.png", "category": "Shoes" },
 
     { "name": "Black Suit", "src": "assets/skins/suits/black_suit.png", "category": "Suits" },
-    { "name": "Grey Suit", "src": "assets/skins/suits/grey_suit.png", "category": "Suits" },
     { "name": "Hazmat Suit", "src": "assets/skins/suits/hazmat.png", "category": "Suits", "credits": "https://namemc.com/skin/840c805dd5498626" },
     { "name": "Hero Suit", "src": "assets/skins/suits/hero_suit.png", "category": "Suits" },
     { "name": "Mumbo Suit", "src": "assets/skins/suits/mumbo_suit.png", "category": "Suits", "credits": "https://namemc.com/skin/a0764f1f857388d4" },
