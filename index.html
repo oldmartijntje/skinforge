@@ -83,8 +83,15 @@
       <div class="library-content">
         <button id="library-close" type="button" aria-label="Close Library" class="btn btn-danger position-absolute top-0 end-0 m-3" style="font-size:2em">X</button>
         <h2>Skin Library</h2>
-        <div class="library-list" id="library-list">
-          <!-- dynamically loaded -->
+        <!-- Category select and search bar -->
+        <div class="library-controls" style="display:flex;gap:1em;align-items:center;margin-bottom:1em;">
+          <select id="library-category-select" class="form-select" style="max-width:180px;"></select>
+          <input id="library-search" type="text" class="form-control" placeholder="Search skins..." style="max-width:200px;">
+        </div>
+        <div class="library-list-scrollbox" style="max-height:340px;overflow-y:auto;">
+          <div class="library-list" id="library-list">
+            <!-- dynamically loaded -->
+          </div>
         </div>
       </div>
     </div>

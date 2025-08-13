@@ -1,4 +1,3 @@
-
 // Minecraft Skin Layerer - app.js (ESM version)
 // Handles layer management, image normalization, compositing, 3D preview, export, and UI logic
 
@@ -23,6 +22,8 @@ let flatCanvas = null;
 let flatCtx = null;
 let skinViewer = null;
 let lastComposite = null;
+let librarySelectedCategory = null;
+let librarySearchQuery = "";
 
 // --- Utility Functions ---
 function showMessage(msg, timeout = 3000) {
@@ -476,55 +477,82 @@ function exportSkin(msgCb) {
 }
 
 
+function renderLibraryControls() {
+  const select = document.getElementById('library-category-select');
+  select.innerHTML = '';
+  LIBRARY_CATEGORIES.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    select.appendChild(opt);
+  });
+  // Default to first category
+  if (!librarySelectedCategory && LIBRARY_CATEGORIES.length) {
+    librarySelectedCategory = LIBRARY_CATEGORIES[0];
+    select.value = librarySelectedCategory;
+  } else {
+    select.value = librarySelectedCategory;
+  }
+}
+
+// Render filtered skin list
 function renderLibraryList() {
   const container = document.getElementById('library-list');
   container.innerHTML = '';
-  LIBRARY_CATEGORIES.forEach(category => {
-    const catDiv = document.createElement('div');
-    catDiv.className = 'library-category';
-    const catTitle = document.createElement('h3');
-    catTitle.textContent = category;
-    catDiv.appendChild(catTitle);
-    const catList = document.createElement('div');
-    catList.className = 'library-category-list';
-    LIBRARY_SKINS.filter(skin => skin.category === category).forEach(skin => {
-      const item = document.createElement('div');
-      item.className = 'library-item';
-      item.dataset.src = skin.src;
-      item.dataset.credits = skin.credits;
-      const img = document.createElement('img');
-      img.src = skin.src;
-      img.alt = skin.name + ' skin';
-      item.appendChild(img);
-      const span = document.createElement('span');
-      span.textContent = skin.name;
-      item.appendChild(span);
-      item.onclick = function() {
-        addLayerFromLibrary(skin.src, skin.name, skin.credits);
-        closeLibrary();
-      };
-      catList.appendChild(item);
-    });
-    catDiv.appendChild(catList);
-    container.appendChild(catDiv);
+  // Filter by selected category and search query
+  const query = librarySearchQuery.trim().toLowerCase();
+  const skins = LIBRARY_SKINS.filter(skin =>
+    skin.category === librarySelectedCategory &&
+    (!query || skin.name.toLowerCase().includes(query))
+  );
+  if (!skins.length) {
+    const emptyMsg = document.createElement('div');
+    emptyMsg.style.color = 'var(--bs-secondary)';
+    emptyMsg.style.padding = '1em';
+    emptyMsg.textContent = 'No skins found.';
+    container.appendChild(emptyMsg);
+    return;
+  }
+  skins.forEach(skin => {
+    const item = document.createElement('div');
+    item.className = 'library-item';
+    item.dataset.src = skin.src;
+    item.dataset.credits = skin.credits;
+    const img = document.createElement('img');
+    img.src = skin.src;
+    img.alt = skin.name + ' skin';
+    item.appendChild(img);
+    const span = document.createElement('span');
+    span.textContent = skin.name;
+    item.appendChild(span);
+    item.onclick = function() {
+      addLayerFromLibrary(skin.src, skin.name, skin.credits);
+      closeLibrary();
+    };
+    container.appendChild(item);
   });
 }
 
 function openLibrary() {
   document.getElementById('library-overlay').style.display = 'flex';
   document.getElementById('library-close').focus();
+  renderLibraryControls();
   renderLibraryList();
 }
+
+// Add missing closeLibrary function
 function closeLibrary() {
   document.getElementById('library-overlay').style.display = 'none';
 }
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeLibrary();
-  if (e.key === 'r' && (e.ctrlKey || e.metaKey)) {
-    renderPreviews();
-    e.preventDefault();
-  }
+document.getElementById('library-category-select').addEventListener('change', function() {
+  librarySelectedCategory = this.value;
+  renderLibraryList();
+});
+
+document.getElementById('library-search').addEventListener('input', function() {
+  librarySearchQuery = this.value;
+  renderLibraryList();
 });
 
 // --- Drag-and-drop import ---
@@ -558,5 +586,7 @@ window.addEventListener('DOMContentLoaded', function() {
           renderPreviews();
         });
       }
+      // Set default category for library select
+      librarySelectedCategory = LIBRARY_CATEGORIES[0];
     });
 });
