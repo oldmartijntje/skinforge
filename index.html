@@ -41,6 +41,24 @@
           <div id="export-import-message" class="message" style="display:none; position:static; margin-top:1em;"></div>
         </div>
       </div>
+      <!-- Export Credits Modal -->
+      <div class="modal fade" id="export-credits-modal" tabindex="-1" aria-labelledby="exportCreditsLabel" aria-hidden="true" style="z-index:3000;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exportCreditsLabel">Export Complete</h5>
+            </div>
+            <div class="modal-body">
+              <p>I hope you'll enjoy your new skin.<br>
+              You are using <span id="credits-count"></span> layers that have credits attached. Please give their skin a like:</p>
+              <div id="credits-list"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="export-credits-done">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
   <main style="flex-grow: 2;">
@@ -105,5 +123,7 @@
     </div>
   </footer>
   <script type="module" src="app.js"></script>
+  <!-- Bootstrap JS (for modals, etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

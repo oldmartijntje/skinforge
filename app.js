@@ -324,6 +324,26 @@ function showExportImportModal() {
         setTimeout(() => document.body.removeChild(a), 100);
         exportImportMsg.textContent = 'PNG exported. This is the format you can import into Minecraft.';
         exportImportMsg.style.display = 'block';
+
+        // Check for credited layers
+        const creditedLayers = layers.filter(l => l.visible && l.credits);
+        if (creditedLayers.length > 0) {
+          // Fill modal content
+          document.getElementById('credits-count').textContent = creditedLayers.length;
+          const creditsList = document.getElementById('credits-list');
+          creditsList.innerHTML = '';
+          creditedLayers.forEach(layer => {
+            const a = document.createElement('a');
+            a.textContent = layer.name;
+            a.href = typeof layer.credits === 'string' ? layer.credits : '#';
+            a.target = '_blank';
+            a.className = 'd-block mb-1';
+            creditsList.appendChild(a);
+          });
+          // Show Bootstrap modal
+          const modal = new bootstrap.Modal(document.getElementById('export-credits-modal'));
+          modal.show();
+        }
       }, 'image/png');
     };
 function closeExportImportModal() {
@@ -545,7 +565,8 @@ function showToast(msg) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'missing-layer-toast';
-    toast.className = 'toast align-items-center text-bg-danger border-0 position-fixed bottom-0 end-0 m-4';
+  toast.className = 'toast align-items-center text-bg-danger border-0 position-fixed bottom-0 end-0 m-4';
+  toast.style.zIndex = '4000';
     toast.setAttribute('role', 'alert');
     toast.setAttribute('aria-live', 'assertive');
     toast.setAttribute('aria-atomic', 'true');
