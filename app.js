@@ -701,18 +701,24 @@ window.addEventListener('DOMContentLoaded', function() {
       // Load specific layers by name on startup
       let defaultLayerNames = ['Skintone H03', 'Blue Steve Shirt', 'Blue Steve Pants', 'Steve Eyes', 'Steve Hair', 'Steve Beard'];
       let loadedCount = 0;
-      layers = [];
-      defaultLayerNames.forEach(layerName => {
+      layers = new Array(defaultLayerNames.length);
+      defaultLayerNames.forEach((layerName, idx) => {
         const skin = LIBRARY_SKINS.find(s => s.name === layerName);
         if (skin) {
           makeLayer({ name: skin.name, src: skin.src, type: 'library', credits: skin.credits }, (layer) => {
-            layers.push(layer);
+            layers[idx] = layer;
             loadedCount++;
             if (loadedCount === defaultLayerNames.length) {
               updateLayersList();
               renderPreviews();
             }
           });
+        } else {
+          loadedCount++;
+          if (loadedCount === defaultLayerNames.length) {
+            updateLayersList();
+            renderPreviews();
+          }
         }
       });
       // Set default category for library select
