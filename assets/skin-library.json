@@ -1,8 +1,10 @@
 {
+  "contentVersion": 3,
+  "systemCompatibilityVersion": 1,
   "categories": [
     "Base",
     "Hair",
-    "Eyes",
+    "Face",
     "Accessories",
     "Pants",
     "Shirts",
@@ -17,13 +19,13 @@
     { "name": "Skintone3", "src": "assets/skins/base/base3.png", "category": "Base" },
     { "name": "Skintone4", "src": "assets/skins/base/base4.png", "category": "Base" },
 
-    { "name": "Brown Eyes", "src": "assets/skins/eyes/brown_eyes.png", "category": "Eyes" },
-    { "name": "Thin Eyes", "src": "assets/skins/eyes/eyes.png", "category": "Eyes" },
-    { "name": "Thin Eyes 2", "src": "assets/skins/eyes/eyes2.png", "category": "Eyes" },
-    { "name": "Red Eyes", "src": "assets/skins/eyes/eyes3.png", "category": "Eyes", "credits": "https://namemc.com/skin/75597abffa885c85" },
-    { "name": "Eyes 4", "src": "assets/skins/eyes/eyes4.png", "category": "Eyes" },
-    { "name": "Eyes 5", "src": "assets/skins/eyes/eyes5.png", "category": "Eyes" },
-    { "name": "Steve Face", "src": "assets/skins/eyes/steve_face.png", "category": "Eyes" },
+    { "name": "Brown Eyes", "src": "assets/skins/faces/brown_eyes.png", "category": "Face" },
+    { "name": "Thin Eyes", "src": "assets/skins/faces/eyes.png", "category": "Face" },
+    { "name": "Thin Eyes 2", "src": "assets/skins/faces/eyes2.png", "category": "Face" },
+    { "name": "Red Eyes", "src": "assets/skins/faces/eyes3.png", "category": "Face", "credits": "https://namemc.com/skin/75597abffa885c85" },
+    { "name": "Eyes 4", "src": "assets/skins/faces/eyes4.png", "category": "Face" },
+    { "name": "Eyes 5", "src": "assets/skins/faces/eyes5.png", "category": "Face" },
+    { "name": "Steve Face", "src": "assets/skins/faces/steve_face.png", "category": "Face" },
 
     { "name": "Blonde Long Hair", "src": "assets/skins/hair/blonde_long_hair.png", "category": "Hair", "credits":"https://namemc.com/skin/1cd5429f86749f57" },
     { "name": "Brown Hair", "src": "assets/skins/hair/hair.png", "category": "Hair" },
@@ -60,17 +62,45 @@
     { "name": "Themepark Employee", "src": "assets/skins/suits/themepark_employee.png", "category": "Suits" },
     { "name": "Turtle Onesie", "src": "assets/skins/suits/turtle_onesie.png", "category": "Suits", "credits":"https://namemc.com/skin/68c36ff472bb555e" },
 
-    { "name": "Eyes 6", "src": "assets/skins/eyes/eyes6.png", "category": "Eyes" },
-    { "name": "Eyes 7", "src": "assets/skins/eyes/eyes7.png", "category": "Eyes" },
-    { "name": "Eyes 8", "src": "assets/skins/eyes/eyes8.png", "category": "Eyes" },
-    { "name": "Green Eyes", "src": "assets/skins/eyes/green_eyes.png", "category": "Eyes" },
+    { "name": "Eyes 6", "src": "assets/skins/faces/eyes6.png", "category": "Face" },
+    { "name": "Eyes 7", "src": "assets/skins/faces/eyes7.png", "category": "Face" },
+    { "name": "Eyes 8", "src": "assets/skins/faces/eyes8.png", "category": "Face" },
+    { "name": "Green Eyes", "src": "assets/skins/faces/green_eyes.png", "category": "Face" },
 
     { "name": "Black Hair", "src": "assets/skins/hair/black_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/d1d85566db37b607" },
-    { "name": "Green Hair", "src": "assets/skins/hair/green_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/77f8419fc6d78439" },
+    { "name": "Broccoli Green", "src": "assets/skins/hair/green_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/77f8419fc6d78439" },
     { "name": "Hair 4", "src": "assets/skins/hair/hair4.png", "category": "Hair", "credits": "https://namemc.com/skin/c2a50aa42134036e" },
     { "name": "Hair 5", "src": "assets/skins/hair/hair5.png", "category": "Hair", "credits": "https://namemc.com/skin/fa7631436be1c1c2" },
 
     { "name": "Blue Pants 2", "src": "assets/skins/pants/blue_pants2.png", "category": "Pants" },
-    { "name": "Red Pants", "src": "assets/skins/pants/red_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/77f8419fc6d78439" }
+    { "name": "Red Pants", "src": "assets/skins/pants/red_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/77f8419fc6d78439" },
+
+    { "name": "Bakugo Mask", "src": "assets/skins/accessories/bakugo_mask.png", "category": "Accessories", "credits":"https://www.minecraftskins.com/skin/22755898/katsuki-bakugo/" },
+    { "name": "Mieles Cape", "src": "assets/skins/accessories/mieles_cape.png", "category": "Accessories", "credits":"https://namemc.com/skin/2cad8e2370e2f73c" },
+    { "name": "Mieles Crown", "src": "assets/skins/accessories/mieles_crown.png", "category": "Accessories", "credits":"https://namemc.com/skin/2cad8e2370e2f73c" },
+
+    { "name": "Noob", "src": "assets/skins/base/noob.png", "category": "Base" },
+    { "name": "Rabbit", "src": "assets/skins/base/rabbit.png", "category": "Base", "credits":"https://namemc.com/skin/42a877af3309f3c0" },
+    { "name": "Wooly Noob", "src": "assets/skins/base/wooly_noob.png", "category": "Base" },
+
+    { "name": "Alex Eyes", "src": "assets/skins/faces/alex_eyes.png", "category": "Face" },
+    { "name": "Bakugo Eyes", "src": "assets/skins/faces/bakugo_eyes.png", "category": "Face" },
+    { "name": "Green Eyes 2", "src": "assets/skins/faces/green_eyes2.png", "category": "Face" },
+    { "name": "Mieles Head", "src": "assets/skins/faces/mieles_head.png", "category": "Face", "credits":"https://namemc.com/skin/2cad8e2370e2f73c" },
+
+    { "name": "Bakugo Hair", "src": "assets/skins/hair/bakugo_hair.png", "category": "Hair", "credits":"https://www.minecraftskins.com/skin/22755898/katsuki-bakugo/" },
+    { "name": "Orange Hair", "src": "assets/skins/hair/orange_hair.png", "category": "Hair", "credits":"https://namemc.com/skin/5ebccc5764d74b16" },
+    { "name": "Orange Long Hair", "src": "assets/skins/hair/orange_long_hair.png", "category": "Hair", "credits":"https://namemc.com/skin/553ea2c8e315ac1e" },
+
+    { "name": "Alex Pants", "src": "assets/skins/pants/alex_pants.png", "category": "Pants" },
+
+    { "name": "Alex Shirt", "src": "assets/skins/shirts/alex_shirt.png", "category": "Shirts" },
+
+    { "name": "Brown Boots", "src": "assets/skins/shoes/brown_boots.png", "category": "Shoes" },
+
+    { "name": "AOT Suit", "src": "assets/skins/suits/AOT_suit.png", "category": "Suits" },
+    { "name": "Bakugo Outfit", "src": "assets/skins/suits/bakugo_outfit.png", "category": "Suits", "credits":"https://www.minecraftskins.com/skin/22755898/katsuki-bakugo/" },
+    { "name": "Purple Suit", "src": "assets/skins/suits/purple_suit.png", "category": "Suits", "credits":"https://namemc.com/skin/2cad8e2370e2f73c" },
+    { "name": "Subaru Suit", "src": "assets/skins/suits/subaru_suit.png", "category": "Suits" }
   ]
 }
