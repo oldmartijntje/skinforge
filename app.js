@@ -702,6 +702,13 @@ window.addEventListener('DOMContentLoaded', function() {
       let defaultLayerNames = ['Skintone H03', 'Blue Steve Shirt', 'Blue Steve Pants', 'Steve Eyes', 'Steve Hair', 'Steve Beard'];
       let loadedCount = 0;
       layers = new Array(defaultLayerNames.length);
+      // Load layers in strict order, only update UI after all are loaded
+      function finishLoading() {
+        // Remove any undefined slots (missing layers)
+        layers = layers.filter(l => l !== undefined);
+        updateLayersList();
+        renderPreviews();
+      }
       defaultLayerNames.forEach((layerName, idx) => {
         const skin = LIBRARY_SKINS.find(s => s.name === layerName);
         if (skin) {
@@ -709,15 +716,13 @@ window.addEventListener('DOMContentLoaded', function() {
             layers[idx] = layer;
             loadedCount++;
             if (loadedCount === defaultLayerNames.length) {
-              updateLayersList();
-              renderPreviews();
+              finishLoading();
             }
           });
         } else {
           loadedCount++;
           if (loadedCount === defaultLayerNames.length) {
-            updateLayersList();
-            renderPreviews();
+            finishLoading();
           }
         }
       });
