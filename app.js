@@ -14,6 +14,8 @@ const LAYERS_LIST_ID = 'layers-list';
 const LIBRARY_JSON = 'assets/skin-library.json';
 let LIBRARY_CATEGORIES = [];
 let LIBRARY_SKINS = [];
+const SYSTEM_VERSION = 1;
+const CONTENT_VERSION = 3;
 
 // --- State ---
 let layers = [];
@@ -352,11 +354,28 @@ function importSkinforgeFile(file, msgCb) {
   reader.onload = function(ev) {
     try {
       const data = JSON.parse(ev.target.result);
+      if (typeof data.systemCompatibilityVersion !== 'undefined') {
+        if (data.systemCompatibilityVersion < 1) {
+          msgCb('Incompatible .skinforge file (systemCompatibilityVersion mismatch).');
+          showToast('Incompatible .skinforge file.');
+          return;
+        }
+        if (data.systemCompatibilityVersion > SYSTEM_VERSION) {
+          msgCb('Incompatible .skinforge file. (are you from the future?)');
+          showToast('Incompatible .skinforge file. (are you from the future?)');
+          return;
+        }
+      } else {
+        msgCb('Incompatible .skinforge file (systemCompatibilityVersion mismatch).');
+        showToast('Incompatible .skinforge file.');
+        return;
+      }
       if (!data.exportType || !Array.isArray(data.layers)) {
         msgCb('Invalid .skinforge file.');
         return;
       }
       layers = [];
+      let missingLayer = false;
       if (data.exportType === 'embedded') {
         let loaded = 0;
         data.layers.forEach((l, idx) => {
@@ -378,27 +397,70 @@ function importSkinforgeFile(file, msgCb) {
                 msgCb('Imported embedded .skinforge config.');
               }
             });
-          }, () => msgCb('Failed to load embedded image.'));
+          }, () => {
+            missingLayer = true;
+            loadImage('assets/error.png', errImg => {
+              makeLayer({
+                name: 'Missing Layer',
+                img: errImg,
+                visible: true,
+                opacity: 1.0,
+                type: 'error'
+              }, layer => {
+                layers[idx] = layer;
+                loaded++;
+                if (loaded === data.layers.length) {
+                  updateLayersList();
+                  renderPreviews();
+                  msgCb('Imported embedded .skinforge config (some layers missing).');
+                  showToast('One or more layers did not exist and were replaced with error.png');
+                }
+              });
+            });
+          });
         });
       } else if (data.exportType === 'reference') {
         let loaded = 0;
         data.layers.forEach((l, idx) => {
           if (l.type === 'library' && l.src) {
-            makeLayer({
-              name: l.name,
-              src: l.src,
-              visible: l.visible,
-              opacity: l.opacity,
-              type: l.type,
-              credits: l.credits
-            }, layer => {
-              layers[idx] = layer;
-              loaded++;
-              if (loaded === data.layers.length) {
-                updateLayersList();
-                renderPreviews();
-                msgCb('Imported reference .skinforge config.');
-              }
+            loadImage(l.src, img => {
+              makeLayer({
+                name: l.name,
+                img,
+                visible: l.visible,
+                opacity: l.opacity,
+                type: l.type,
+                src: l.src,
+                credits: l.credits
+              }, layer => {
+                layers[idx] = layer;
+                loaded++;
+                if (loaded === data.layers.length) {
+                  updateLayersList();
+                  renderPreviews();
+                  msgCb('Imported reference .skinforge config.');
+                }
+              });
+            }, () => {
+              missingLayer = true;
+              loadImage('assets/error.png', errImg => {
+                makeLayer({
+                  name: 'Missing Layer',
+                  img: errImg,
+                  visible: true,
+                  opacity: 1.0,
+                  type: 'error'
+                }, layer => {
+                  layers[idx] = layer;
+                  loaded++;
+                  if (loaded === data.layers.length) {
+                    updateLayersList();
+                    renderPreviews();
+                    msgCb('Imported reference .skinforge config (some layers missing).');
+                    showToast('One or more layers did not exist and were replaced with error.png');
+                  }
+                });
+              });
             });
           } else {
             loaded++;
@@ -447,8 +509,9 @@ function exportSkin(msgCb) {
   const exportType = embed ? 'embedded' : 'reference';
   const exported = {
     exportType,
+    systemCompatibilityVersion: SYSTEM_VERSION,
+    contentVersion: CONTENT_VERSION,
     layers: layers.map(layer => {
-      // Always include 'visible' property
       const base = {
         credits: layer.credits || undefined,
         name: layer.name,
@@ -476,6 +539,34 @@ function exportSkin(msgCb) {
   msgCb('Configuration exported as .skinforge file.');
 }
 
+// --- Toast for missing layers ---
+function showToast(msg) {
+  let toast = document.getElementById('missing-layer-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'missing-layer-toast';
+    toast.className = 'toast align-items-center text-bg-danger border-0 position-fixed bottom-0 end-0 m-4';
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+    toast.innerHTML = `
+      <div class="d-flex">
+        <div class="toast-body">${msg}</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    `;
+    document.body.appendChild(toast);
+  } else {
+    toast.querySelector('.toast-body').textContent = msg;
+  }
+  if (window.bootstrap && window.bootstrap.Toast) {
+    const bsToast = window.bootstrap.Toast.getOrCreateInstance(toast);
+    bsToast.show();
+  } else {
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 10000);
+  }
+}
 
 function renderLibraryControls() {
   const select = document.getElementById('library-category-select');
@@ -495,12 +586,21 @@ function renderLibraryControls() {
   }
 }
 
-// Render filtered skin list
+document.getElementById('library-category-select').addEventListener('change', function() {
+  librarySelectedCategory = this.value;
+  renderLibraryList();
+});
+
+document.getElementById('library-search').addEventListener('input', function() {
+  librarySearchQuery = this.value;
+  renderLibraryList();
+});
+
 function renderLibraryList() {
   const container = document.getElementById('library-list');
   container.innerHTML = '';
   // Filter by selected category and search query
-  const query = librarySearchQuery.trim().toLowerCase();
+  const query = librarySearchQuery ? librarySearchQuery.trim().toLowerCase() : '';
   const skins = LIBRARY_SKINS.filter(skin =>
     skin.category === librarySelectedCategory &&
     (!query || skin.name.toLowerCase().includes(query))
