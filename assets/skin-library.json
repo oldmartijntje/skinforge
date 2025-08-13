@@ -39,10 +39,10 @@
     { "name": "SteamPunk Glasses", "src": "assets/skins/accessories/steampunk_glasses.png", "category": "Accessories", "credits": "https://namemc.com/skin/964be322fd113204" },
     { "name": "White Gloves", "src": "assets/skins/accessories/white_gloves.png", "category": "Accessories" },
 
-    { "name": "Blue Pants", "src": "assets/skins/pants/blue_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
+    { "name": "Blue Steve Pants", "src": "assets/skins/pants/blue_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
     { "name": "Dark Pants", "src": "assets/skins/pants/dark_pants.png", "category": "Pants", "credits":"https://namemc.com/skin/56bd6445a110c27c" },
 
-    { "name": "Blue Shirt", "src": "assets/skins/shirts/blue_shirt.png", "category": "Shirts", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
+    { "name": "Blue Steve Shirt", "src": "assets/skins/shirts/blue_shirt.png", "category": "Shirts", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
     { "name": "Dutch Shirt", "src": "assets/skins/shirts/dutch_shirt.png", "category": "Shirts" },
     { "name": "Gray Shirt", "src": "assets/skins/shirts/gray_shirt.png", "category": "Shirts", "credits":"https://namemc.com/skin/56bd6445a110c27c" },
     { "name": "Maid Dress", "src": "assets/skins/shirts/maid_dress.png", "category": "Shirts" },

@@ -15,7 +15,7 @@ const LIBRARY_JSON = 'assets/skin-library.json';
 let LIBRARY_CATEGORIES = [];
 let LIBRARY_SKINS = [];
 const SYSTEM_VERSION = 1;
-const CONTENT_VERSION = 6;
+const CONTENT_VERSION = 7;
 
 // --- State ---
 let layers = [];
@@ -698,16 +698,24 @@ window.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       LIBRARY_CATEGORIES = data.categories || [];
       LIBRARY_SKINS = data.skins || [];
-      // Pre-populate with first Base skin as base layer
-      const baseSkin = LIBRARY_SKINS.find(s => s.category === 'Base') || LIBRARY_SKINS[0];
-      if (baseSkin) {
-        makeLayer({ name: baseSkin.name, src: baseSkin.src, type: 'library', credits: baseSkin.credits }, (layer) => {
-          layers.push(layer);
-          updateLayersList();
-          renderPreviews();
-        });
-      }
+      // Load specific layers by name on startup
+      let defaultLayerNames = ['Skintone1', 'Blue Steve Shirt', 'Blue Steve Pants', 'Steve Eyes', 'Steve Hair', 'Steve Beard'];
+      let loadedCount = 0;
+      layers = [];
+      defaultLayerNames.forEach(layerName => {
+        const skin = LIBRARY_SKINS.find(s => s.name === layerName);
+        if (skin) {
+          makeLayer({ name: skin.name, src: skin.src, type: 'library', credits: skin.credits }, (layer) => {
+            layers.push(layer);
+            loadedCount++;
+            if (loadedCount === defaultLayerNames.length) {
+              updateLayersList();
+              renderPreviews();
+            }
+          });
+        }
+      });
       // Set default category for library select
-      librarySelectedCategory = LIBRARY_CATEGORIES[0];
+      librarySelectedCategory = LIBRARY_CATEGORIES[1];
     });
 });
