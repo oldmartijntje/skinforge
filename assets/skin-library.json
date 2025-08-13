@@ -20,21 +20,21 @@
 
     { "name": "Thin Eyes", "src": "assets/skins/eyes/eyes.png", "category": "Eyes" },
     { "name": "Thin Eyes 2", "src": "assets/skins/eyes/eyes2.png", "category": "Eyes" },
-    { "name": "Red Eyes", "src": "assets/skins/eyes/eyes3.png", "category": "Eyes" },
+    { "name": "Red Eyes", "src": "assets/skins/eyes/eyes3.png", "category": "Eyes", "credits": "https://namemc.com/skin/75597abffa885c85" },
 
     { "name": "Brown Hair", "src": "assets/skins/hair/hair.png", "category": "Hair" },
     { "name": "Long Green Hair", "src": "assets/skins/hair/hair2.png", "category": "Hair", "credits": "https://namemc.com/skin/5a9c28db4c0da127" },
     { "name": "Brown Hair 2", "src": "assets/skins/hair/hair3.png", "category": "Hair" },
-    { "name": "Red Long Hair", "src": "assets/skins/hair/red_long_hair.png", "category": "Hair" },
+    { "name": "Red Long Hair", "src": "assets/skins/hair/red_long_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/75597abffa885c85" },
 
     { "name": "Cat Ears", "src": "assets/skins/accessories/cat_ears.png", "category": "Accessories" },
     { "name": "Christmas Hat", "src": "assets/skins/accessories/christmas_hat.png", "category": "Accessories" },
     { "name": "SteamPunk Glasses", "src": "assets/skins/accessories/steampunk_glasses.png", "category": "Accessories", "credits": "https://namemc.com/skin/964be322fd113204" },
     { "name": "White Gloves", "src": "assets/skins/accessories/white_gloves.png", "category": "Accessories" },
 
-    { "name": "Blue Pants", "src": "assets/skins/pants/blue_pants.png", "category": "Pants" },
+    { "name": "Blue Pants", "src": "assets/skins/pants/blue_pants.png", "category": "Pants", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
 
-    { "name": "Blue Shirt", "src": "assets/skins/shirts/blue_shirt.png", "category": "Shirts" },
+    { "name": "Blue Shirt", "src": "assets/skins/shirts/blue_shirt.png", "category": "Shirts", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
     { "name": "Dutch Shirt", "src": "assets/skins/shirts/dutch_shirt.png", "category": "Shirts" },
     { "name": "Maid Dress", "src": "assets/skins/shirts/maid_dress.png", "category": "Shirts" },
 
