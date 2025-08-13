@@ -15,7 +15,7 @@ const LIBRARY_JSON = 'assets/skin-library.json';
 let LIBRARY_CATEGORIES = [];
 let LIBRARY_SKINS = [];
 const SYSTEM_VERSION = 1;
-const CONTENT_VERSION = 7;
+const CONTENT_VERSION = 8;
 
 // --- State ---
 let layers = [];
@@ -699,7 +699,7 @@ window.addEventListener('DOMContentLoaded', function() {
       LIBRARY_CATEGORIES = data.categories || [];
       LIBRARY_SKINS = data.skins || [];
       // Load specific layers by name on startup
-      let defaultLayerNames = ['Skintone1', 'Blue Steve Shirt', 'Blue Steve Pants', 'Steve Eyes', 'Steve Hair', 'Steve Beard'];
+      let defaultLayerNames = ['Skintone H03', 'Blue Steve Shirt', 'Blue Steve Pants', 'Steve Eyes', 'Steve Hair', 'Steve Beard'];
       let loadedCount = 0;
       layers = [];
       defaultLayerNames.forEach(layerName => {

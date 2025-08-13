@@ -16,6 +16,13 @@
     { "name": "Skintone2", "src": "assets/skins/base/base2.png", "category": "Base" },
     { "name": "Skintone3", "src": "assets/skins/base/base3.png", "category": "Base" },
     { "name": "Skintone4", "src": "assets/skins/base/base4.png", "category": "Base" },
+    { "name": "Skintone H00", "src": "assets/skins/base/skintone_h00.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h00/" },
+    { "name": "Skintone H01", "src": "assets/skins/base/skintone_h01.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h01/" },
+    { "name": "Skintone H02", "src": "assets/skins/base/skintone_h02.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h02/" },
+    { "name": "Skintone H03", "src": "assets/skins/base/skintone_h03.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h03/" },
+    { "name": "Skintone H04", "src": "assets/skins/base/skintone_h04.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h04/" },
+    { "name": "Skintone H05", "src": "assets/skins/base/skintone_h05.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h05/" },
+    { "name": "Skintone H06", "src": "assets/skins/base/skintone_h06.png", "category": "Base", "credits": "https://www.planetminecraft.com/skin/ohmi-skin-base-tone-h06/" },
 
     { "name": "Brown Eyes", "src": "assets/skins/faces/brown_eyes.png", "category": "Face" },
     { "name": "Thin Eyes", "src": "assets/skins/faces/eyes.png", "category": "Face" },
