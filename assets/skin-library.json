@@ -105,7 +105,6 @@
     { "name": "Detective Hat", "src": "assets/skins/accessories/detective_hat.png", "category": "Accessories" },
     { "name": "Gloves", "src": "assets/skins/accessories/gloves.png", "category": "Accessories", "credits": "https://namemc.com/skin/5231be3de7a81713" },
     { "name": "Headphones", "src": "assets/skins/accessories/headphones.png", "category": "Accessories" },
-    { "name": "Base5", "src": "assets/skins/base/base5.png", "category": "Base" },
     { "name": "Brown Shorts", "src": "assets/skins/pants/brown_shorts.png", "category": "Pants", "credits": "https://namemc.com/skin/27fa5e09fb178309" },
     { "name": "Gray Pants", "src": "assets/skins/pants/gray_pants.png", "category": "Pants" },
     { "name": "Pants", "src": "assets/skins/pants/pants.png", "category": "Pants", "credits": "https://namemc.com/skin/5231be3de7a81713" },
