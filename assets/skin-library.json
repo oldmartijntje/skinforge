@@ -149,5 +149,12 @@
     { "name": "Steve Eyes", "src": "assets/skins/faces/jackblack_steve_eyes.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
     { "name": "Steve Hair", "src": "assets/skins/hair/jackblack_steve_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
     { "name": "Steve Beard", "src": "assets/skins/faces/jackblack_steve_beard.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" }
+  ,
+    { "name": "Bartjebro Glasses", "src": "assets/skins/accessories/bartjebro_glasses.png", "category": "Accessories", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
+    { "name": "Bartjebro Hat", "src": "assets/skins/accessories/bartjebro_hat.png", "category": "Accessories", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
+    { "name": "Bartjebro Face", "src": "assets/skins/faces/bartjebro_face.png", "category": "Face", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
+    { "name": "Bartjebro Hair", "src": "assets/skins/hair/bartjebro_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
+    { "name": "Gems Long Hair", "src": "assets/skins/hair/gems_long_hair.png", "category": "Hair" },
+    { "name": "Bartjebro Suit", "src": "assets/skins/suits/bartjebro_suit.png", "category": "Suits", "credits": "https://namemc.com/skin/68cee26e9b01709e" }
   ]
 }
