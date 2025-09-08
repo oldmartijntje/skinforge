@@ -151,6 +151,7 @@
     { "name": "Steve Beard", "src": "assets/skins/faces/jackblack_steve_beard.png", "category": "Face", "credits": "https://namemc.com/skin/8a605f546ff45a2f" },
 
     { "name": "Miku Eyes", "src": "assets/skins/faces/eyesMiku.png", "category": "Face", "credits": "https://www.minecraftskins.com/skin/23451709/hatsune-miku---vocaloid/" },
+    { "name": "Miku Outfit", "src": "assets/skins/suits/outfitMiku.png", "category": "Suits", "credits": "https://www.minecraftskins.com/skin/23451709/hatsune-miku---vocaloid/" },
     { "name": "Miku Hair", "src": "assets/skins/hair/hairMiku.png", "category": "Hair", "credits": "https://www.minecraftskins.com/skin/23451709/hatsune-miku---vocaloid/" },
     
     { "name": "Bartjebro Glasses", "src": "assets/skins/accessories/bartjebro_glasses.png", "category": "Accessories", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
