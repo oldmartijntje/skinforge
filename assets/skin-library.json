@@ -164,7 +164,10 @@
     { "name": "Crown", "src": "assets/skins/accessories/crown.png", "category": "Accessories" },
     { "name": "Crown", "src": "assets/skins/accessories/crown2.png", "category": "Accessories" },
     { "name": "Crown", "src": "assets/skins/accessories/crown3.png", "category": "Accessories" },
-    { "name": "Knight Suit", "src": "assets/skins/suits/knight_suit.png", "category": "Suits" }
+    { "name": "Knight Suit", "src": "assets/skins/suits/knight_suit.png", "category": "Suits" },
+    { "name": "Glitch", "src": "assets/skins/accessories/glitch.png", "category": "Accessories", "credits": "https://namemc.com/skin/4386d5536aa68611" },
+    { "name": "Red Crown", "src": "assets/skins/accessories/crown4.png", "category": "Accessories" },
+    { "name": "Thin Red Eyes", "src": "assets/skins/faces/evil_eyes.png", "category": "Face" }
 
   ]
 }
