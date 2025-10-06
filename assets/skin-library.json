@@ -159,6 +159,12 @@
     { "name": "Bartjebro Face", "src": "assets/skins/faces/bartjebro_face.png", "category": "Face", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
     { "name": "Bartjebro Hair", "src": "assets/skins/hair/bartjebro_hair.png", "category": "Hair", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
     { "name": "Gems Long Hair", "src": "assets/skins/hair/gems_long_hair.png", "category": "Hair" },
-    { "name": "Bartjebro Suit", "src": "assets/skins/suits/bartjebro_suit.png", "category": "Suits", "credits": "https://namemc.com/skin/68cee26e9b01709e" }
+    { "name": "Bartjebro Suit", "src": "assets/skins/suits/bartjebro_suit.png", "category": "Suits", "credits": "https://namemc.com/skin/68cee26e9b01709e" },
+
+    { "name": "Crown", "src": "assets/skins/accessories/crown.png", "category": "Accessories" },
+    { "name": "Crown", "src": "assets/skins/accessories/crown2.png", "category": "Accessories" },
+    { "name": "Crown", "src": "assets/skins/accessories/crown3.png", "category": "Accessories" },
+    { "name": "Knight Suit", "src": "assets/skins/suits/knight_suit.png", "category": "Suits" }
+
   ]
 }
