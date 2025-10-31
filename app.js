@@ -15,7 +15,7 @@ const LIBRARY_JSON = 'assets/skin-library.json';
 let LIBRARY_CATEGORIES = [];
 let LIBRARY_SKINS = [];
 const SYSTEM_VERSION = 1;
-const CONTENT_VERSION = 12;
+const CONTENT_VERSION = 13;
 
 // --- State ---
 let layers = [];
