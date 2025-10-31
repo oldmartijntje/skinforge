@@ -27,7 +27,7 @@
     { "name": "Brown Eyes", "src": "assets/skins/faces/brown_eyes.png", "category": "Face" },
     { "name": "Thin Eyes", "src": "assets/skins/faces/eyes.png", "category": "Face" },
     { "name": "Four Eyes", "src": "assets/skins/faces/four-eyes.png", "category": "Face" },
-    { "name": "Four Eyes (lower)", "src": "assets/skins/faces/four-eyes-lower.png", "category": "Face" },
+    { "name": "Four Eyes 2", "src": "assets/skins/faces/four-eyes-inside.png", "category": "Face" },
     { "name": "Thin Eyes 2", "src": "assets/skins/faces/eyes2.png", "category": "Face" },
     { "name": "Red Eyes", "src": "assets/skins/faces/eyes3.png", "category": "Face", "credits": "https://namemc.com/skin/75597abffa885c85" },
     { "name": "Eyes 4", "src": "assets/skins/faces/eyes4.png", "category": "Face" },
