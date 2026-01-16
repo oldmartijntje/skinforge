@@ -55,7 +55,7 @@
     { "name": "Dutch Shirt", "src": "assets/skins/shirts/dutch_shirt.png", "category": "Shirts" },
     { "name": "Gray Shirt", "src": "assets/skins/shirts/gray_shirt.png", "category": "Shirts", "credits":"https://namemc.com/skin/56bd6445a110c27c" },
     { "name": "Maid Dress", "src": "assets/skins/shirts/maid_dress.png", "category": "Shirts" },
-    { "name": "Maid Dress Black And White", "src": "assets/skins/shirts/maid_dress_black_white.png", "category": "Shirts" },
+    { "name": "Maid Dress Black And White", "src": "assets/skins/suits/maid_dress_black_white.png", "category": "Suits" },
 
     { "name": "Black Shoes", "src": "assets/skins/shoes/black_shoes.png", "category": "Shoes" },
     { "name": "Stockings", "src": "assets/skins/shoes/stockings.png", "category": "Shoes" },
